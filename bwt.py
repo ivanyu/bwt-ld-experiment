@@ -19,7 +19,12 @@ def bwt(s):
 
 def main(filename):
     with open(filename, 'r') as f:
-        print bwt(f.read())
+        content = f.read()
+    content_bwt = bwt(content)
+    CHUNK_SIZE = 64
+    for i in range(1, len(content_bwt)/CHUNK_SIZE + 1):
+        s = content_bwt[(i-1)*CHUNK_SIZE:i*CHUNK_SIZE]
+        print s
 
 
 if __name__ == "__main__":
